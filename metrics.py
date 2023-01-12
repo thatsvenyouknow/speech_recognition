@@ -1,11 +1,13 @@
 import Levenshtein 
+import librosa
 
-def rtf(model_time, audio_dur):
+def rtf(model_time, file_path):
     """
     Real-Time Factor:
     - model_time: time taken by the system to process input
-    - audio_dur: duration of input audio
+    - file_path: path to audio file (.wav)
     """
+    audio_dur = librosa.get_duration(filename=file_path)
     return model_time/audio_dur
 
 def wer(ground_truth, model_out):

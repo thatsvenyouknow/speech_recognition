@@ -1,4 +1,4 @@
-from tqdm import tqdm
+import time
 import whisper
 
 def init_whisper(mode = "base"):
@@ -16,6 +16,8 @@ def run_whisper(file_path, setup):
         on each window.
     """
     audio = whisper.load_audio(file_path)
+    start = time.time()
     audio = whisper.pad_or_trim(audio) #pad/trim to fit 30 seconds
     output = setup["model"].transcribe(audio)["text"]
-    return output
+    model_time = time.time() - start  
+    return output, model_time

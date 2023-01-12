@@ -1,7 +1,7 @@
 import json
 import os
 from scipy.io import wavfile
-from tqdm import tqdm
+import time
 from vosk import Model, KaldiRecognizer
 
 def init_vosk(model_path = "vosk-model-en-us-0.42-gigaspeech", sample_rate = 44100):
@@ -19,8 +19,9 @@ def run_vosk(file_path, setup, n_frames = 4000, thresh = 0):
         audio = f.read()
     audio_bytes = bytes(bytearray(audio))
 
-    #Run Speech Recognizer
+    #Run Speech Recognizer + time model
     i = 0
+    start = time.time()
     while True:
         data = audio_bytes[n_frames*i:n_frames*(i+1)]
         i += 1
@@ -47,4 +48,5 @@ def run_vosk(file_path, setup, n_frames = 4000, thresh = 0):
         if entry["conf"] > thresh:
             #confs.append(entry["conf"])
             output += entry["word"]
-    return output
+    model_time = time.time() - start  
+    return output, model_time

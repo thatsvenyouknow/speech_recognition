@@ -1,5 +1,5 @@
 import os
-from tqdm import tqdm
+import time
 from google.cloud import speech
 
 def init_google(model = "default", key = "google_key.json"):
@@ -23,10 +23,12 @@ def init_google(model = "default", key = "google_key.json"):
 def run_google(file_path, setup):
     with open(file_path, "rb") as f:
         audio = f.read()
+        start = time.time()
         audio_file = speech.RecognitionAudio(content = audio)
         response = setup["client"].recognize(
             config = setup["config"],
             audio = audio_file
         )
-        output = response.results[0].alternatives[0].transcript   
-    return output
+        output = response.results[0].alternatives[0].transcript
+        model_time = time.time() - start   
+    return output, model_time

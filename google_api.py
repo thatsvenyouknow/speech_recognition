@@ -29,6 +29,10 @@ def run_google(file_path, setup):
             config = setup["config"],
             audio = audio_file
         )
-        output = response.results[0].alternatives[0].transcript
-        model_time = time.time() - start   
+        try:
+            output = response.results[0].alternatives[0].transcript
+            model_time = time.time() - start
+        except IndexError:
+            output = " "
+            model_time = time.time() - start   
     return output, model_time

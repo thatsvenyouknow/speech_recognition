@@ -36,17 +36,21 @@ def run_vosk(file_path, setup, n_frames = 4000, thresh = 0):
                 for entry in instance["result"]:
                     if entry["conf"] > thresh:
                         #confs.append(entry["conf"])
-                        output += entry["word"]
-                        output += " "
+                        output += entry["word"] + " "
+                        #output += " "
 
             except KeyError:
                 continue
 
     #last detected word is not in model.Result(), therefore...
     last_instance = json.loads(setup["model"].FinalResult())
-    for entry in last_instance["result"]:
-        if entry["conf"] > thresh:
-            #confs.append(entry["conf"])
-            output += entry["word"]
-    model_time = time.time() - start  
+    try:
+        for entry in last_instance["result"]:
+            if entry["conf"] > thresh:
+                #confs.append(entry["conf"])
+                output += entry["word"] + " "
+        model_time = time.time() - start  
+    except KeyError:
+        output += " "
+        model_time = time.time() - start
     return output, model_time

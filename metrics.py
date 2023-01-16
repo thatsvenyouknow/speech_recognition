@@ -23,7 +23,7 @@ def wer(ground_truth, model_out):
         - n_corr: number of correct words
     """
     if isinstance(ground_truth, str):
-        truth = [truth]
+        ground_truth = [ground_truth]
 
     if isinstance(model_out, str):
         model_out = [model_out]
@@ -31,7 +31,7 @@ def wer(ground_truth, model_out):
     if len(model_out) == 0:
         raise ValueError("model output is empty")
 
-    if model_out.lower().strip() == ground_truth:
+    if model_out[0].lower().strip() == ground_truth[0]:
         return 1.0
 
     else: #if ground_truth != model output

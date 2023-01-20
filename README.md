@@ -3,7 +3,7 @@
 
 
 ## About
-This repo contains the recordings of 10 exemplary robot commands which were obtained in noisy environments. The goal of the project is to establish which of the speech-to-text models performs best with selected sentences.
+This repo contains the recordings of 10 exemplary robot commands, spoken by 13 different persons, which were obtained in noisy environments. The goal of the project is to establish which of the speech-to-text models performs best with the selected sentences.
 
 ## Getting Started
 Some of the models require additional instructions on how to make them work, which is listed in the following.
@@ -12,7 +12,7 @@ Some of the models require additional instructions on how to make them work, whi
 In order to run the Vosk model, one needs to download one of the available models [here](https://alphacephei.com/vosk/models) and put the model into the current path for it to be loaded. For the model comparison, the "vosk-model-en-us-0.42-gigaspeech" was used which contains a generic US English model trained by Kaldi on Gigaspeech and is the largest available English model to use with Vosk. 
 
 ### Whisper
-[Whisper](https://github.com/openai/whisper) is a general-purpose speech recognition model. Besides installing whisper, one also needs to install the command-line tool ffmpeg. Instructions can be found under the provided link. Whisper offers several model sizes (tiny, base, small, medium, large), the usage of which may depend on your system. The init_whisper function of the speech_to_text class allows to choose which model shall be used. In order to run one of the Whisper models (e.g. "base"), one has to install Pytorch 3.7+ and ffmpeg, which is described under the link above.
+[Whisper](https://github.com/openai/whisper) is a general-purpose speech recognition model. Besides installing whisper, one also needs to install Pytorch 3.7+, and the command-line tool ffmpeg. Instructions can be found under the provided link. Whisper offers several model sizes (tiny, base, small, medium, large), the usage of which may depend on your system. The init_whisper function of the speech_to_text class allows to choose which model shall be used. 
 
 ### Google Cloud Speech to Text
 The [Google Cloud Speech to Text API](https://cloud.google.com/speech-to-text) is an on-demand cloud service. Only 60 minutes of audio per month (+300$ free credits upon creating a new account) are free and afterwards the service costs 0.015-0.07€ per minute audio, depending on which underlying model is used. For that a service account needs to be created ([website](https://console.cloud.google.com)), including billing information to confirm that you are a real person. Of the several models that are offered, three will be used in the comparison:

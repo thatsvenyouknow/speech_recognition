@@ -21,6 +21,10 @@ def init_google(model = "default", key = "google_key.json"):
     return setup
 
 def run_google(file_path, setup):
+    """
+    file_path: path to audio file
+    setup: dictionary from init_google
+    """
     with open(file_path, "rb") as f:
         audio = f.read()
         start = time.time()

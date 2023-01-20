@@ -8,11 +8,11 @@ This repo contains the recordings of 10 exemplary robot commands, spoken by 13 d
 ## Getting Started
 Some of the models require additional instructions on how to make them work, which is listed in the following.
 
-### Vosk (Kaldi)
-In order to run the Vosk model, one needs to download one of the available models [here](https://alphacephei.com/vosk/models) and put the model into the current path for it to be loaded. For the model comparison, the "vosk-model-en-us-0.42-gigaspeech" was used which contains a generic US English model trained by Kaldi on Gigaspeech and is the largest available English model to use with Vosk. 
-
 ### Whisper
 [Whisper](https://github.com/openai/whisper) is a general-purpose speech recognition model. Besides installing whisper, one also needs to install Pytorch 3.7+, and the command-line tool ffmpeg. Instructions can be found under the provided link. Whisper offers several model sizes (tiny, base, small, medium, large), the usage of which may depend on your system. The init_whisper function of the speech_to_text class allows to choose which model shall be used. 
+
+### Vosk (Kaldi)
+In order to run the Vosk model, one needs to download one of the available models [here](https://alphacephei.com/vosk/models) and put the model into the current path for it to be loaded. For the model comparison, the "vosk-model-en-us-0.42-gigaspeech" was used which contains a generic US English model trained by Kaldi on Gigaspeech and is the largest available English model to use with Vosk. 
 
 ### Google Cloud Speech to Text
 The [Google Cloud Speech to Text API](https://cloud.google.com/speech-to-text) is an on-demand cloud service. Only 60 minutes of audio per month (+300$ free credits upon creating a new account) are free and afterwards the service costs 0.015-0.07€ per minute audio, depending on which underlying model is used. For that a service account needs to be created ([website](https://console.cloud.google.com)), including billing information to confirm that you are a real person. Of the several models that are offered, three will be used in the comparison:
@@ -32,4 +32,8 @@ To get started, there are good tutorials on the webpage. The short-version is as
 
 Note: Performance may be approved by using [model adaptation](https://cloud.google.com/speech-to-text/docs/adaptation-model) which helps the algorithm to detect frequently expected words. This option is not used in the comparison.
 
-### Next
+### Wav2Vec 2.0
+[Wav2Vec 2.0](https://github.com/facebookresearch/fairseq/blob/main/examples/wav2vec/README.md) is an ASR model that uses unsupervised pretraining before fine-tuning the model with supervised learning. The model requires the transformers, soundfile, pytroch and torchaudio library which have to be installed and imported before running the model. 
+
+### Help
+In case something remains unclear, please do not hesitate to contact me by mail: sven.guenther@tum.de

@@ -33,7 +33,7 @@ To get started, there are good tutorials on the webpage. The short-version is as
 Note: Performance may be approved by using [model adaptation](https://cloud.google.com/speech-to-text/docs/adaptation-model) which helps the algorithm to detect frequently expected words. This option is not used in the comparison.
 
 ### Wav2Vec 2.0
-[Wav2Vec 2.0](https://github.com/facebookresearch/fairseq/blob/main/examples/wav2vec/README.md) is an ASR model that uses unsupervised pretraining before fine-tuning the model with supervised learning. The model requires the transformers, soundfile, pytroch and torchaudio library which have to be installed and imported before running the model. 
+[Wav2Vec 2.0](https://github.com/facebookresearch/fairseq/blob/main/examples/wav2vec/README.md) is an ASR model that uses unsupervised pretraining before fine-tuning the model with supervised learning. The model requires the transformers, soundfile, pytroch and torchaudio library which have to be installed and imported before running the model. Additionally, the "Wav2Vec 2.0 Large (960h)" model from the hyperlink above needs to be downloaded and passed to the Wav2Vec2 processor (the code will run right away if you put the model into your current path).
 
 ### Help
 In case something remains unclear, please do not hesitate to contact me by mail: sven.guenther@tum.de

@@ -7,6 +7,7 @@ import time
 def init_wav2vec2(model_name = "facebook/wav2vec2-large-960h-lv60-self"):
     """
     model_name: pretrained model to use (default: 1.18GB facebook model)
+                alternatively: facebook/wav2vec2-large-robust-ft-libri-960h
     """
     setup = {"processor": Wav2Vec2Processor.from_pretrained(model_name),
              "model": Wav2Vec2ForCTC.from_pretrained(model_name),

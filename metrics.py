@@ -39,6 +39,7 @@ def wer(ground_truth, model_out):
 
         for input, output in zip(ground_truth, model_out):
             output = output.lower().strip() #lower and remove trailing spaces
+            output = output.replace(".", "").replace(",", "") #remove punctuation
             editops = Levenshtein.editops(input, output)
             n_sub_trial = sum(1 if op[0] == "replace" else 0 for op in editops)
             n_del_trial = sum(1 if op[0] == "delete" else 0 for op in editops)

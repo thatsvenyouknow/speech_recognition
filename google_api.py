@@ -15,7 +15,7 @@ def init_google(model = "default", key = "google_key.json"):
              "config": speech.RecognitionConfig(
                     sample_rate_hertz = 44100,
                     language_code = "en-US",
-                    #model = default
+                    model = model
                     )
             }
     return setup
